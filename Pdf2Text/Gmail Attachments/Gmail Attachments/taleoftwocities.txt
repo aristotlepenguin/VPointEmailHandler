@@ -1,0 +1,15 @@
+file:=fileOpen("names","r")
+#MaxThreadsPerHotkey 3
+^S::
+#MaxThreadsPerHotkey 1
+Loop, read, source.txt
+{
+    Loop, parse, A_LoopReadLine, %A_Tab%
+    {
+        KeyWait, k, D
+		SendInput,{BS}
+		KeyWait, l, D
+		SendInput,{BS} {!}mine  %A_LoopField% {Enter}
+    }
+	
+}
